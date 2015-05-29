@@ -23,15 +23,15 @@ public class DepositCommand implements Command {
     }
     public DepositCommand(){}
 
-    @Override
+
     public Object execute() {
         c.deposit(amount);
         return true;
     }
 
-    @Override
+
     public void printCommandInfo() {
-        System.out.println("Deposits. Usage: 2 [name] [amount]. [name] must be of an existing client.");
+        System.out.println("Deposits on currently active account. Usage: 2 [name] [amount]. [name] must be of an existing client.");
 
     }
 }

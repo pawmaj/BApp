@@ -22,5 +22,6 @@
     <file url="file://$PROJECT_DIR$/src/main/java/com/luxoft/cjp/service/FindClientCommand.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/main/java/com/luxoft/cjp/service/GetAccountsCommand.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/main/java/com/luxoft/cjp/service/WithdrawCommand.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/test/java/com/luxoft/cjp/model/ClientTest.java" charset="UTF-8" />
   </component>
 </project>

@@ -23,7 +23,7 @@ public class FindClientCommand implements Command {
         this.clientNameToFind = clientNameToFind;
     }
 
-    @Override
+
     public Object execute() {
         Client c = bs.findClientByName(clientNameToFind);
         if (c != null) {
@@ -38,7 +38,7 @@ public class FindClientCommand implements Command {
 
     }
     //RETURNS NULL IF NO SUCH NAME!
-    @Override
+
     public void printCommandInfo() {
         System.out.println("Print a Client's info. Usage: 3 [name]");
 
