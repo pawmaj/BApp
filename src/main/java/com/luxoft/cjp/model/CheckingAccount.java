@@ -8,7 +8,10 @@ public class CheckingAccount extends AbstractAccount implements Account {
 
     }
 
-    @Override
+    public float getOverdraft() {
+        return overdraft;
+    }
+
     public void withdraw(float amount) throws OverdraftLimitExceededException {
         //TODO Fix the following logic:
         if (getBalance() - amount < -overdraft) throw new OverdraftLimitExceededException(overdraft, getBalance(), amount);

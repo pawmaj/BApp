@@ -30,7 +30,7 @@ public class TransferCommand implements Command {
         this.amount = amount;
     }
 
-    @Override
+
     public Boolean execute() {
         try {
             clientFrom.withdraw(amount);
@@ -50,7 +50,7 @@ public class TransferCommand implements Command {
         }
     }
 
-    @Override
+
     public void printCommandInfo() {
         System.out.println("Attempts to transfer between the clients' active accounts. Returns true/false on success/failure");
 

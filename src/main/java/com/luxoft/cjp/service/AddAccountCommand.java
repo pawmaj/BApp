@@ -25,14 +25,14 @@ public class AddAccountCommand implements Command {
         // The command will be constructed again, once the user provides all necessary arguments
     }
 
-    @Override
+
     public Boolean execute() {
         if (typeOfAccountToAdd.equals("saving")) { c.createAccount(accountTypes.SAVING); return true; }
         if (typeOfAccountToAdd.equals("checking")){c.createAccount(accountTypes.CHECKING); return true; }
         return false;//fails if user provides wrong input
     }
 
-    @Override
+
     public void printCommandInfo() {
         System.out.println("Add an account and set it as active. Usage: 1 [name] ['saving'/'checking']. [name] must be of an existing client.");
     }

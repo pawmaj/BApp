@@ -7,7 +7,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Objects;
 
-public class Client implements Report {
+public class Client implements Report, Comparable {
 
     private String name;
     private List<Account> accounts = new LinkedList<Account>();
@@ -16,6 +16,9 @@ public class Client implements Report {
     private String electronicAddress;
     private String phoneNumber;
     private Gender gender;
+    private String city;
+
+    public String getCity() { return city; }
 
     public void setName(String name) {
         this.name = name;
@@ -79,12 +82,13 @@ public class Client implements Report {
 
 
 
-    public Client(String name, float initialOverdraft, String electronicAddress, String phoneNumber, String gender) throws InvalidBankArgumentException {
+    public Client(String name, float initialOverdraft, String electronicAddress, String phoneNumber, String city, String gender) throws InvalidBankArgumentException {
         if (!electronicAddress.matches("[a-z|A-Z]*@[a-zA-Z]*.[a-zA-Z]*")) throw new InvalidBankArgumentException(electronicAddress);
         this.name = name;
         this.initialOverdraft = initialOverdraft;
         this.electronicAddress = electronicAddress;
         this.phoneNumber = phoneNumber;
+        this.city = city;
         //decide gender based on the String argument
         if (gender.equals("m")){
             this.gender = Gender.MALE;
@@ -141,5 +145,11 @@ public class Client implements Report {
     @Override
     public int hashCode() {
         return Objects.hash(getName());
+    }
+
+    //compare by cities, use String's compareTo method
+    public int compareTo(Object o) {
+        Client c = (Client)o;
+       return getCity().compareTo(c.getCity());
     }
 }

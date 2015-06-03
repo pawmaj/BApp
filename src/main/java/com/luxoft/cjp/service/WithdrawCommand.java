@@ -30,7 +30,6 @@ public class WithdrawCommand implements Command {
         this.c = c;
     }
 
-    @Override
     public Boolean execute() {
         try {
            c.withdraw(amount);
@@ -48,7 +47,7 @@ public class WithdrawCommand implements Command {
         }
     }
 
-    @Override
+
     public void printCommandInfo() {
         System.out.println("Attempts to withdraw. Usage: 4 [name] [amount]");
 

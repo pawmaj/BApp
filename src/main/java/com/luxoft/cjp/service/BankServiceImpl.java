@@ -16,29 +16,36 @@ public class BankServiceImpl implements BankService {
         this.b = b;
     }
 
-    @Override
+
     public void addClient(Client client) throws ClientExistsException{
     b.addClient(client);
     }
 
-    @Override
+
     public void removeClient(Bank bank, Client client) {
         bank.clients.remove(client);
 
     }
 
-    @Override
+
     public void addAccount(Client client, accountTypes type) {
         client.createAccount(type);
     }
 
-    @Override
+
     public void setActiveAccount(Client client, int number) {
         client.setActiveAccount(client.getAccounts().get(number));
     }
 
-    @Override
+
     public Client findClientByName(String name) {
+        for (Client c: b.getClients()){
+            if(c.getName().equals(name)) return c;
+        }
+        return null;
+    }
+    //Overloaded for searching in any bank
+    public Client findClientByName(String name, Bank b) {
         for (Client c: b.getClients()){
             if(c.getName().equals(name)) return c;
         }
@@ -48,3 +55,4 @@ public class BankServiceImpl implements BankService {
         b.printReport();
     }
 }
+//^Hi,\\s*[A-Z][a-z]{2,} [A-Z][a-z]{2,}\\s*!$

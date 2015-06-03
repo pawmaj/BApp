@@ -28,7 +28,7 @@ public class AddClientCommand implements Command {
     // The command will be constructed again, once the user inputs necessary arguments
     }
 
-    @Override
+
     public Boolean execute() {
         try {
             bs.addClient(c);
@@ -39,7 +39,7 @@ public class AddClientCommand implements Command {
         }
     }
 
-    @Override
+
     public void printCommandInfo() {
         System.out.println("Register a client. Usage: 0 [name] [initial overdraft] [e-mail address] [telephone] ['m'/'f']");
     }

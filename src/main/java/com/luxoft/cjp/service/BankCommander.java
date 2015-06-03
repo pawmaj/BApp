@@ -51,14 +51,15 @@ public class BankCommander {
                 //extract command number
                 int commandNumber = Integer.valueOf(command[0]);
 
-                //construct commands based on user input
+                //construct commands based on user input:
                 switch (commandNumber) {
                     case 0://add client
                         commands[commandNumber] = new AddClientCommand(bs, new Client(command[1], //name
                                 Integer.valueOf(command[2]),//ovedraft
                                 command[3],//address
                                 command[4],//phone
-                                command[5]));//gender
+                                command[5],//city
+                                command[6]));//gender
                         break;
                     case 1://add account
                         commands[commandNumber] = new AddAccountCommand(bs.findClientByName(command[1]),//name of an existing client
@@ -79,7 +80,8 @@ public class BankCommander {
 
                 commands[commandNumber].execute();
 
-                //MAGIC - handle all wrong input with just three catch blocks!
+
+                //MAGIC - handle all wrong input with just three catch blocks:
             }catch (ArrayIndexOutOfBoundsException e){
                 System.out.println("Wrong syntax - not enough arguments.");
             }catch(NumberFormatException e) {
@@ -91,6 +93,10 @@ public class BankCommander {
             }catch(NoSuchElementException e){
                 System.out.println("Internal parser error. Please try a different shell.");
             }
+            //DEBUG
+            System.out.println(BankReport.getClientByCity(currentBank));
+            bs.report();
+
             }
         }
 

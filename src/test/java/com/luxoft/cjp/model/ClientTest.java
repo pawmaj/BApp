@@ -9,7 +9,7 @@ public class ClientTest {
 
     @Test
     public void clientEqualsMustBeReflexive() throws Exception {
-        Client c1 = new Client("Aldona",0,"aldona@al.pl","578556444","f");
+        Client c1 = new Client("Aldona",0,"aldona@al.pl","578556444","Warszawa","f");
         if (c1.equals(c1)==false) throw new Exception();
 
     }

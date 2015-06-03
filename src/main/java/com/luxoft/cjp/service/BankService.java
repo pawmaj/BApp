@@ -21,4 +21,7 @@ public interface BankService {
     //returns null if no such client is found
     public Client findClientByName(String name);
 
+    //overloaded for searchning in any bank
+    public Client findClientByName(String name, Bank b);
+
 }

@@ -1,15 +1,13 @@
 package com.luxoft.cjp.model;
 
-import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.List;
+import java.util.*;
 
 public class Bank implements Report {
 
-    public List<Client> clients = new LinkedList<Client>();
+    public Set<Client> clients = new TreeSet<Client>();
     private List<ClientRegistrationListener> listeners = new LinkedList<ClientRegistrationListener>();
 
-    public List<Client> getClients(){
+    public Set<Client> getClients(){
         return clients;
     }
 
@@ -17,7 +15,16 @@ public class Bank implements Report {
         listeners.add(new PrintClientListener());
         listeners.add(new EmailNotificationListener());
 
-
+    }
+    public Integer getNumberOfClients(){
+        Properties props = new Properties();
+        String s = props.getProperty("java.version");
+        System.out.println("Number of clients:"  +clients.size());
+        return clients.size();
+    }
+    public void getClientsSorted(){
+        //Stored in treeMap, they are already sorted
+        System.out.print(getClients());
     }
 
 
@@ -32,7 +39,7 @@ public class Bank implements Report {
         }
     }
 
-    @Override
+
     public void printReport() {
         //Display information about each client:
         Iterator<Client> it = clients.iterator();
@@ -43,13 +50,13 @@ public class Bank implements Report {
     }
 
     private class PrintClientListener implements ClientRegistrationListener {
-        @Override
+
         public void onClientAdded(Client c) {
             System.out.print("Registered "); c.printReport();
         }
     }
     private class EmailNotificationListener implements ClientRegistrationListener {
-        @Override
+
         public void onClientAdded(Client c) {
             System.out.println("Notification email for client " + c.getClientSalutation() +" to be sent.");
         }
