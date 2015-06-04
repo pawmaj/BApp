@@ -4,28 +4,31 @@ import java.util.*;
 
 public class Bank implements Report {
 
-    public Set<Client> clients = new TreeSet<Client>();
+
+    private Set<Client> clients = new HashSet<Client>();
+    private Map<String, Client> clientsMap = new HashMap<String, Client>();
     private List<ClientRegistrationListener> listeners = new LinkedList<ClientRegistrationListener>();
 
-    public Set<Client> getClients(){
-        return clients;
+    //This getter obscures internal implementation
+    //and returns unmodifiable collection
+    public Collection<Client> getClients()
+    {
+        return Collections.unmodifiableCollection((Collection<Client>) clients);
     }
 
-    public Bank(){
-        listeners.add(new PrintClientListener());
-        listeners.add(new EmailNotificationListener());
-
+    public Map<String, Client> getClientsMap() {
+        return clientsMap;
     }
+
     public Integer getNumberOfClients(){
-        Properties props = new Properties();
-        String s = props.getProperty("java.version");
         System.out.println("Number of clients:"  +clients.size());
         return clients.size();
     }
     public void getClientsSorted(){
-        //Stored in treeMap, they are already sorted
+
         System.out.print(getClients());
     }
+
 
 
     public void addClient(Client c) throws ClientExistsException {
@@ -49,17 +52,31 @@ public class Bank implements Report {
 
     }
 
-    private class PrintClientListener implements ClientRegistrationListener {
+    //Map the client to his name
+    class MapClientListener implements ClientRegistrationListener {
+
+        public void onClientAdded(Client c) {
+            getClientsMap().put(c.getName(), c);
+        }
+    }
+     class PrintClientListener implements ClientRegistrationListener {
 
         public void onClientAdded(Client c) {
             System.out.print("Registered "); c.printReport();
         }
     }
-    private class EmailNotificationListener implements ClientRegistrationListener {
+     class EmailNotificationListener implements ClientRegistrationListener {
 
         public void onClientAdded(Client c) {
             System.out.println("Notification email for client " + c.getClientSalutation() +" to be sent.");
         }
     }
+
+        public Bank(){
+            listeners.add(new PrintClientListener());
+            listeners.add(new EmailNotificationListener());
+            listeners.add(new MapClientListener());
+
+        }
 
 }

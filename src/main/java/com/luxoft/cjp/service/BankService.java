@@ -16,7 +16,7 @@ public interface BankService {
 
     public void addAccount(Client client, accountTypes type);
 
-    public void setActiveAccount(Client client, int number);
+    public void switchActiveAccount(Client client);
 
     //returns null if no such client is found
     public Client findClientByName(String name);

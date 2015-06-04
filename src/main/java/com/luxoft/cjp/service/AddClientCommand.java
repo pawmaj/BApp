@@ -41,6 +41,6 @@ public class AddClientCommand implements Command {
 
 
     public void printCommandInfo() {
-        System.out.println("Register a client. Usage: 0 [name] [initial overdraft] [e-mail address] [telephone] ['m'/'f']");
+        System.out.println("Register a client. Usage: 0 [name] [initial overdraft] [e-mail address] [telephone] [city] ['m'/'f']");
     }
 }

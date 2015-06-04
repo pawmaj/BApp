@@ -20,15 +20,15 @@ public class BankReport {
     public static int getAccountsNumber(Bank b){
         int accountCount = 0;
         for (Client c:b.getClients()){
-            for(Account acc:c.getAccounts())
-                accountCount++;
+            for(Account acc:c.getAccounts()) accountCount++;
         }
         System.out.println("Number of accounts: " + String.valueOf(accountCount));
         return accountCount;
     }
     public static Set<Client> getClientsSorted(Bank  b){
         System.out.println(b.getClients());
-        return b.getClients();
+        //TODO fix it
+        return null;
     }
     public static float getBankCreditSum(Bank b){
         float creditSum = 0.0F;
@@ -43,6 +43,7 @@ public class BankReport {
     }
 
     public static Map<String,List<Client>> getClientByCity(Bank b){
+
         Map<String,List<Client>> cityClientsMap = new HashMap<String, List<Client>>();
         for(Client c : b.getClients()){
             if (!cityClientsMap.containsKey(c.getCity()))cityClientsMap.put(c.getCity(), new LinkedList<Client>());

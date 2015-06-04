@@ -1,15 +1,7 @@
 package com.luxoft.cjp.model;
 
-import com.luxoft.cjp.model.AbstractAccount;
-import com.luxoft.cjp.model.Account;
-import com.luxoft.cjp.model.NotEnoughFundsException;
-
 public class SavingAccount extends AbstractAccount implements Account {
 
-
-    public SavingAccount(float initialBalance){
-        setBalance(initialBalance);
-    }
 
 
     public void withdraw(float amount) throws NotEnoughFundsException {

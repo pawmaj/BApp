@@ -29,6 +29,16 @@ public class BankCommander {
 
     public static void main(String[] args) {
 
+        //Report mode:
+        if(args[1].equals("-report")){
+            BankReport.getAccountsNumber(currentBank);
+            BankReport.getBankCreditSum(currentBank);
+            BankReport.getClientByCity(currentBank);
+            BankReport.getNumberOfClients(currentBank);
+            BankReport.getClientsSorted(currentBank);
+            System.exit(0);
+        }
+
         //Main loop:
         while (true){
             //print command list
@@ -38,8 +48,9 @@ public class BankCommander {
             }
             try//catch null pointer or invalid argument exceptions when user types too short or wrong command
             {
+                System.out.println(currentBank.getClients().size());
 
-                System.out.println();//Start on a new line for
+                System.out.println();//Start on a new line
                 Scanner scanner = new Scanner(System.in);
 
                 //read a line
@@ -93,9 +104,9 @@ public class BankCommander {
             }catch(NoSuchElementException e){
                 System.out.println("Internal parser error. Please try a different shell.");
             }
-            //DEBUG
+            //DEBUG output to show my set sorting clients by the city:
             System.out.println(BankReport.getClientByCity(currentBank));
-            bs.report();
+            BankReport.getAccountsNumber(currentBank);
 
             }
         }

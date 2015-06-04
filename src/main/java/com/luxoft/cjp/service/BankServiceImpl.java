@@ -23,7 +23,7 @@ public class BankServiceImpl implements BankService {
 
 
     public void removeClient(Bank bank, Client client) {
-        bank.clients.remove(client);
+        bank.getClients().remove(client);
 
     }
 
@@ -33,8 +33,9 @@ public class BankServiceImpl implements BankService {
     }
 
 
-    public void setActiveAccount(Client client, int number) {
-        client.setActiveAccount(client.getAccounts().get(number));
+    public void switchActiveAccount(Client client) {
+       //TODO fix this
+       // client.setActiveAccount(client.getAccounts().get(number));
     }
 
 
@@ -46,10 +47,7 @@ public class BankServiceImpl implements BankService {
     }
     //Overloaded for searching in any bank
     public Client findClientByName(String name, Bank b) {
-        for (Client c: b.getClients()){
-            if(c.getName().equals(name)) return c;
-        }
-        return null;
+        return b.getClientsMap().get(name);
     }
     public void report(){
         b.printReport();

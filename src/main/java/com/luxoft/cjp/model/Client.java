@@ -2,15 +2,12 @@ package com.luxoft.cjp.model;
 
 import com.luxoft.cjp.service.InvalidBankArgumentException;
 
-import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 
 public class Client implements Report, Comparable {
 
     private String name;
-    private List<Account> accounts = new LinkedList<Account>();
+    private Set<Account> accounts = new HashSet<Account>();
     private Account activeAccount;
     private float initialOverdraft;
     private String electronicAddress;
@@ -48,7 +45,7 @@ public class Client implements Report, Comparable {
         return activeAccount.getBalance();
     }
 
-    public List<Account> getAccounts() {
+    public Set<Account> getAccounts() {
         return accounts;
     }
 
@@ -68,18 +65,38 @@ public class Client implements Report, Comparable {
         activeAccount.withdraw(x);
     }
     //create an account and set it as active
-    public void createAccount(accountTypes type) {
+    public Boolean createAccount(accountTypes type) {
+        //TODO make only ony account of each type allowed - fix logic
         if (type.equals(accountTypes.CHECKING)) {
-            accounts.add(new CheckingAccount());
-            setActiveAccount(accounts.get(accounts.size()-1));
+            if (accounts.size()==2){
+                System.out.print("Only two accounts per client");
+                return false;
+            }
+            accounts.add(new CheckingAccount(initialOverdraft));
+            //set newly created account as active:
+            Iterator<Account> it = accounts.iterator();
+            while (it.hasNext()){
+                Account a = it.next();
+                if(a instanceof CheckingAccount) setActiveAccount(a);
+            }
+            return true;
         }
         if (type.equals(accountTypes.SAVING)){
-            accounts.add(new SavingAccount(0));
-            setActiveAccount(accounts.get(accounts.size()-1));
+            if (accounts.size()>=2){
+                System.out.print("Only two accounts per client");
+                return false;
+            }
+            accounts.add(new SavingAccount());
+            //set newly created account as active:
+            Iterator<Account> it = accounts.iterator();
+            while (it.hasNext()){
+                Account a = it.next();
+                if(a instanceof SavingAccount) setActiveAccount(a);
+            }
 
         }
+        return true;
     }
-
 
 
     public Client(String name, float initialOverdraft, String electronicAddress, String phoneNumber, String city, String gender) throws InvalidBankArgumentException {
@@ -147,9 +164,10 @@ public class Client implements Report, Comparable {
         return Objects.hash(getName());
     }
 
-    //compare by cities, use String's compareTo method
+    //Keeping equals() and compare() consistency
     public int compareTo(Object o) {
         Client c = (Client)o;
-       return getCity().compareTo(c.getCity());
+       return getName().compareTo(c.getName());
+
     }
 }
