@@ -2,7 +2,6 @@ package com.luxoft.cjp.service;
 
 import com.luxoft.cjp.model.Client;
 import com.luxoft.cjp.model.Command;
-import com.luxoft.cjp.model.accountTypes;
 
 /**
  * Created by pamajcher on 2015-05-28.
@@ -27,8 +26,8 @@ public class AddAccountCommand implements Command {
 
 
     public Boolean execute() {
-        if (typeOfAccountToAdd.equals("saving")) { c.createAccount(accountTypes.SAVING); return true; }
-        if (typeOfAccountToAdd.equals("checking")){c.createAccount(accountTypes.CHECKING); return true; }
+        if (typeOfAccountToAdd.equals("saving")) { c.createAccount("saving"); return true; }
+        if (typeOfAccountToAdd.equals("checking")){c.createAccount("saving"); return true; }
         return false;//fails if user provides wrong input
     }
 

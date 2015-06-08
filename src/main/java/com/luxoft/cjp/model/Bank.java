@@ -9,11 +9,26 @@ public class Bank implements Report {
     private Map<String, Client> clientsMap = new HashMap<String, Client>();
     private List<ClientRegistrationListener> listeners = new LinkedList<ClientRegistrationListener>();
 
+    //When we are returning clients we can as well return them sorted already
     //This getter obscures internal implementation
     //and returns unmodifiable collection
-    public Collection<Client> getClients()
+    //of clients sorted by name
+    public Collection<Client> getClientsSorted()
     {
-        return Collections.unmodifiableCollection((Collection<Client>) clients);
+        TreeSet cts = new TreeSet(new Comparator() {
+            public int compare(Object o1, Object o2) {
+                Client c1 = (Client)o1;
+                Client c2 = (Client)o2;
+                return c1.getName().compareTo(c2.getName());
+            }
+        });
+        for(Client c:clients) cts.add(c);
+
+        return Collections.unmodifiableCollection(cts);
+    }
+
+    public Set<Client> getClients() {
+        return clients;
     }
 
     public Map<String, Client> getClientsMap() {
@@ -24,10 +39,7 @@ public class Bank implements Report {
         System.out.println("Number of clients:"  +clients.size());
         return clients.size();
     }
-    public void getClientsSorted(){
 
-        System.out.print(getClients());
-    }
 
 
 

@@ -25,10 +25,10 @@ public class BankReport {
         System.out.println("Number of accounts: " + String.valueOf(accountCount));
         return accountCount;
     }
-    public static Set<Client> getClientsSorted(Bank  b){
-        System.out.println(b.getClients());
-        //TODO fix it
-        return null;
+    public static Collection<Client> getClientsSorted(Bank b){
+
+        System.out.print(b.getClientsSorted());
+        return b.getClientsSorted();
     }
     public static float getBankCreditSum(Bank b){
         float creditSum = 0.0F;

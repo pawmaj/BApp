@@ -15,6 +15,10 @@ public class Client implements Report, Comparable {
     private Gender gender;
     private String city;
 
+    public float getInitialOverdraft() {
+        return initialOverdraft;
+    }
+
     public String getCity() { return city; }
 
     public void setName(String name) {
@@ -65,9 +69,9 @@ public class Client implements Report, Comparable {
         activeAccount.withdraw(x);
     }
     //create an account and set it as active
-    public Boolean createAccount(accountTypes type) {
+    public Boolean createAccount(String type) {
         //TODO make only ony account of each type allowed - fix logic
-        if (type.equals(accountTypes.CHECKING)) {
+        if (type.equals("checking")) {
             if (accounts.size()==2){
                 System.out.print("Only two accounts per client");
                 return false;
@@ -81,7 +85,7 @@ public class Client implements Report, Comparable {
             }
             return true;
         }
-        if (type.equals(accountTypes.SAVING)){
+        if (type.equals("saving")){
             if (accounts.size()>=2){
                 System.out.print("Only two accounts per client");
                 return false;
