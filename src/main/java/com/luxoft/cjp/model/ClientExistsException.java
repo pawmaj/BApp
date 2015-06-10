@@ -19,3 +19,4 @@ public class ClientExistsException extends Exception {
         this.existingClientName = exname;
     }
 }
+

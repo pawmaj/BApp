@@ -14,13 +14,13 @@ public class BankReport {
 
     public static int getNumberOfClients(Bank b){
         int size = b.getClients().size();
-        System.out.println("Number of clients:" + String.valueOf(size));
+        System.out.println("Number of clients:" + size);
         return size;
     }
     public static int getAccountsNumber(Bank b){
         int accountCount = 0;
         for (Client c:b.getClients()){
-            for(Account acc:c.getAccounts()) accountCount++;
+            accountCount+=c.getAccounts().size();
         }
         System.out.println("Number of accounts: " + String.valueOf(accountCount));
         return accountCount;
@@ -52,3 +52,4 @@ public class BankReport {
         return cityClientsMap;
     }
 }
+

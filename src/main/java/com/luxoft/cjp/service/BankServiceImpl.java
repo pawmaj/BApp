@@ -39,29 +39,35 @@ public class BankServiceImpl implements BankService {
 
     public void switchActiveAccount(Client client) {
        //TODO fix this
+
        // client.setActiveAccount(client.getAccounts().get(number));
     }
 
 
-    public Client findClientByName(String name) {
-        for (Client c: b.getClients()){
-            if(c.getName().equals(name)) return c;
-        }
-        return null;
+    public Client getClient(String name) {
+        return b.getClientsMap().get(name);
     }
     //Overloaded for searching in any bank
-    public Client findClientByName(String name, Bank b) {
+    public Client getClient(String name, Bank b) {
         return b.getClientsMap().get(name);
     }
 
-    public void saveClient(Client c, String folder) {
-    StringBuilder sb = new StringBuilder();
-        sb.append("accounttype=c;");
-        sb.append("balance=" + c.getBalance() + ";");
-        sb.append("overdraft="+c.getInitialOverdraft()+";");
-        sb.append("name="+c.getName()+";");
-        sb.append("gender=m;");
 
+
+    public void saveClient(Client c, String folder) {
+        StringBuilder sb = new StringBuilder();//initialize the string which describes a client
+        if (c.getAccounts().size()>1){//if the client has both accounts
+            sb.append("accounttype=b;");
+        }
+        //serialize remaining properties:
+        sb
+                .append("balance=").append(c.getBalance()).append(";")
+                .append("overdraft=").append(c.getInitialOverdraft()).append(";")
+                .append("name=").append(c.getName()).append(";")
+                .append("gender=").append(c.getGender()).append(";")
+                .append("email=").append(c.getElectronicAddress()).append(";")
+                .append("phone=").append(c.getPhoneNumber()).append(";")
+                .append(("City=")).append(c.getCity()).append(";");
         File f0 = new File(folder);
         f0.mkdir();
         try {
@@ -76,8 +82,13 @@ public class BankServiceImpl implements BankService {
 
     }
 
+    public void loadClient(String folder) {
+        BankFeedService.loadFeed(folder, this);
+    }
+
     public void report(){
         b.printReport();
     }
 }
 //^Hi,\\s*[A-Z][a-z]{2,} [A-Z][a-z]{2,}\\s*!$
+

@@ -32,3 +32,4 @@ public class GetAccountsCommand implements Command {
 
     }
 }
+

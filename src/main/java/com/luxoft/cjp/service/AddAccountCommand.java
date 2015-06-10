@@ -36,3 +36,4 @@ public class AddAccountCommand implements Command {
         System.out.println("Add an account and set it as active. Usage: 1 [name] ['saving'/'checking']. [name] must be of an existing client.");
     }
 }
+

@@ -15,7 +15,7 @@
     <file url="file://$PROJECT_DIR$/src/main/java/com/luxoft/cjp/model/Report.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/main/java/com/luxoft/cjp/model/SavingAccount.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/main/java/com/luxoft/cjp/service/AddClientCommand.java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/src/main/java/com/luxoft/cjp/service/BankCommander.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/com/luxoft/cjp/service/BankApplication.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/main/java/com/luxoft/cjp/service/BankService.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/main/java/com/luxoft/cjp/service/BankServiceImpl.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/main/java/com/luxoft/cjp/service/DepositCommand.java" charset="UTF-8" />

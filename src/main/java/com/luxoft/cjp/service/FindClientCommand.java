@@ -25,7 +25,7 @@ public class FindClientCommand implements Command {
 
 
     public Object execute() {
-        Client c = bs.findClientByName(clientNameToFind);
+        Client c = bs.getClient(clientNameToFind);
         if (c != null) {
             System.out.println("Client found:");
             c.printReport();
@@ -44,3 +44,4 @@ public class FindClientCommand implements Command {
 
     }
 }
+

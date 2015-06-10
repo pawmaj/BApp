@@ -32,3 +32,4 @@ public class NotEnoughFundsException extends BankException {
         this.balance = balance;
     }
 }
+

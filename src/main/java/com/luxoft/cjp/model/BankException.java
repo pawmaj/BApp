@@ -5,3 +5,4 @@ package com.luxoft.cjp.model;
  */
 public abstract class BankException extends Exception {
 }
+

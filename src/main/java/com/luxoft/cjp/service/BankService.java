@@ -18,11 +18,14 @@ public interface BankService {
     public void switchActiveAccount(Client client);
 
     //returns null if no such client is found
-    public Client findClientByName(String name);
+    public Client getClient(String name);
 
     //overloaded for searchning in any bank
-    public Client findClientByName(String name, Bank b);
+    public Client getClient(String name, Bank b);
 
     public void saveClient(Client c, String folder);
 
+    public void loadClient(String folder);
+
 }
+

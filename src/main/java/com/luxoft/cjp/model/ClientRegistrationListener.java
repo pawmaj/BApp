@@ -7,3 +7,4 @@ public interface ClientRegistrationListener {
 
     public void onClientAdded(Client c);
 }
+

@@ -12,7 +12,7 @@ public class Client implements Report, Comparable {
     private float initialOverdraft;
     private String electronicAddress;
     private String phoneNumber;
-    private Gender gender;
+     private String gender;
     private String city;
 
     public float getInitialOverdraft() {
@@ -29,16 +29,13 @@ public class Client implements Report, Comparable {
         return name;
     }
 
-    public Gender getGender() {
+    public String getGender() {
         return gender;
     }
 
-    public void setGender(Gender gender) {
-        this.gender = gender;
-    }
 
     public String getClientSalutation() {
-        return this.getGender().getTitle() + " " + this.getName();
+        return this.getTitle() + " " + this.getName();
     }
 
     public void setActiveAccount(Account a) {
@@ -104,20 +101,15 @@ public class Client implements Report, Comparable {
 
 
     public Client(String name, float initialOverdraft, String electronicAddress, String phoneNumber, String city, String gender) throws InvalidBankArgumentException {
-        if (!electronicAddress.matches("[a-z|A-Z]*@[a-zA-Z]*.[a-zA-Z]*")) throw new InvalidBankArgumentException(electronicAddress);
+        if (!electronicAddress.matches("[a-z|A-Z]*@[a-zA-Z]*.[a-zA-Z]*"))
+            throw new InvalidBankArgumentException(electronicAddress);
         this.name = name;
         this.initialOverdraft = initialOverdraft;
         this.electronicAddress = electronicAddress;
         this.phoneNumber = phoneNumber;
         this.city = city;
         //decide gender based on the String argument
-        if (gender.equals("m")){
-            this.gender = Gender.MALE;
-        }else if (gender.equals("f")) {
-            this.gender = Gender.FEMALE;
-        }else {
-            throw new InvalidBankArgumentException(gender);
-        }
+        this.gender = gender;
     }
 
     public void printReport() {
@@ -174,4 +166,10 @@ public class Client implements Report, Comparable {
        return getName().compareTo(c.getName());
 
     }
+    public String getTitle(){
+        if (this.gender.equals("m"))return "Mr.";
+        if (this.gender.equals("f"))return "Ms.";
+        return "NoTitle!";
+    }
 }
+

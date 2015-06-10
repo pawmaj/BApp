@@ -4,3 +4,4 @@ public interface Report {
 
     void printReport();
 }
+
