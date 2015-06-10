@@ -29,7 +29,7 @@ public class BankFeedService {
         while(true) {//Continue reading lines until exception occurs meaning there are no more lines (or some other error)
             try {
                 feedLine = raf.readLine();
-                raf.close();
+
             } catch (IOException e) {
                 e.printStackTrace();
                 return false;

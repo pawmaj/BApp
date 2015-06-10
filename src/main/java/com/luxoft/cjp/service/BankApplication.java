@@ -1,5 +1,7 @@
 package com.luxoft.cjp.service;
 
+import com.luxoft.cjp.clientserver.BankClient;
+import com.luxoft.cjp.clientserver.BankServer;
 import com.luxoft.cjp.model.Bank;
 
 /**
@@ -22,8 +24,15 @@ public class BankApplication {
             BankReport.getClientsSorted(currentBank);
             System.exit(0);
         }
+
+        Runnable r = new BankServer();
+        Thread t = new Thread(r);
+        t.start();
+        BankClient bc = new BankClient();
+
         //Test feeds:
        TestSerialization.test(bs);
+
 
        //Interactive Mode. Client from the feed is already in it.
         BankCommander.runInteractiveMode(bs);
