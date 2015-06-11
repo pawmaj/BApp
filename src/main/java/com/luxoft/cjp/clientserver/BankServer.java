@@ -50,6 +50,8 @@ public class BankServer implements Runnable {
                         sendMessage("bye");
                 } catch (ClassNotFoundException classnot) {
                     System.err.println("Data received in unknown format");
+                } catch (Exception e){
+
                 }
 
             } while (!message.equals("bye"));
