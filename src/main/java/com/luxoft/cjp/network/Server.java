@@ -34,7 +34,7 @@ public class Server {
     }
 
     private void processAndExecuteMessage(String message) {
-        String[] messArr = message.split(" ");
+        String[] messArr = message.split(",");
         //parse message array
 
         com.luxoft.cjp.model.Client c = bsi.getClient(messArr[0]);
@@ -54,13 +54,20 @@ public class Server {
                         messArr[4],//city
                         messArr[5]
                         ));
-            } catch (InvalidBankArgumentException e) {
+            } catch (NumberFormatException e) {//Float.valueOf fail
                 //TODO send message
                 e.printStackTrace();
-            } catch (ClientExistsException e) {
+            } catch (InvalidBankArgumentException e) {//wrong gender etc
+                //TODO send message
+                e.printStackTrace();
+            } catch (ClientExistsException e) {//client exists
                 //TODO send messaged
                 e.printStackTrace();
-            }
+            } catch (ArrayIndexOutOfBoundsException e) {//too little args
+            //TODO send messaged
+                System.out.println("Incorrect syntax");
+            //e.printStackTrace();
+        }
         }
     }
 

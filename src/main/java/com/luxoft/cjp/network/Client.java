@@ -19,8 +19,10 @@ public class Client {
         } catch (IOException e) {
             e.printStackTrace();
         }
+        System.out.println("Connected to the server");
         do {
-            messageToSend = scanner.nextLine();
+            System.out.print(">");
+            messageToSend = scanner.next();
             try {
                 oos.writeObject(messageToSend);
             } catch (IOException e) {
