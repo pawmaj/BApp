@@ -58,7 +58,7 @@ public class Server {
                 //TODO send message
                 e.printStackTrace();
             } catch (ClientExistsException e) {
-                //TODO send message
+                //TODO send messaged
                 e.printStackTrace();
             }
         }
