@@ -1,4 +1,4 @@
-package com.luxoft.cjp.network;
+package com.luxoft.cjp.service;
 
 import java.io.IOException;
 import java.io.ObjectInputStream;
@@ -7,12 +7,14 @@ import java.net.Socket;
 import java.util.Scanner;
 
 /**
- * Created by pamajcher on 2015-06-11.
+ * Created by pamajcher on 2015-06-15.
  */
-public class Client {
-    //Example commands: John,withdraw,10
-    //                 John,info
-    public Client(){
+public class BankRemoteOffice {
+
+    public static void main(String[] args){
+        //display a menu
+        System.out.println("Welcome to the remote office");
+        System.out.println("Commands are:\n Add [c/s/b];balance;overdraft;name;[m/f];email;phone;city");
         String messageToSend ="";
         ObjectOutputStream oos = null;
         ObjectInputStream ois = null;
@@ -24,12 +26,12 @@ public class Client {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        System.out.println("Connected to the server");
+        System.out.println("Connected to the bank.");
         do {
             try {
 
-            System.out.print(">");
-            messageToSend = scanner.next();
+                System.out.print(">");
+                messageToSend = scanner.next();
                 oos.writeObject(messageToSend);
                 System.out.println((String)ois.readObject());//write out server's responses immediately
             } catch (IOException e) {
@@ -39,7 +41,8 @@ public class Client {
             }
         }while(true);
     }
-    public static void main(final String args[]) {
-        com.luxoft.cjp.network.Client c = new Client();
+        //send feed lines with commands
+        //recieve input
     }
-}
+
+

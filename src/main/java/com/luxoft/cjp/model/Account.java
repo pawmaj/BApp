@@ -15,6 +15,8 @@ public interface Account extends Report {
 
     //prints rounded balance
     void printDecimalValue();
+
+    float getOverdraft();
 }
 
 

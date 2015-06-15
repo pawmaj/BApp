@@ -16,7 +16,7 @@ public class Client implements Report, Comparable {
     private String city;
 
     public float getInitialOverdraft() {
-        return initialOverdraft;
+        return this.activeAccount.getOverdraft();
     }
 
     public String getCity() { return city; }

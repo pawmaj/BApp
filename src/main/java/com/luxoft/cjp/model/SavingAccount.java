@@ -12,6 +12,10 @@ public class SavingAccount extends AbstractAccount implements Account {
         }
     }
 
+    public float getOverdraft() {
+        return 0F;
+    }
+
     @Override
     public int hashCode() {
         return super.hashCode();
