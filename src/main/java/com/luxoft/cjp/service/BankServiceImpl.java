@@ -82,6 +82,7 @@ public class BankServiceImpl implements BankService {
 
     }
 
+
     public void loadClient(String folder) {
         BankFeedService.loadFeed(folder, this);
     }

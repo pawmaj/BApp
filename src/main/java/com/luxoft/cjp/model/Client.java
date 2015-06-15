@@ -171,5 +171,6 @@ public class Client implements Report, Comparable {
         if (this.gender.equals("f"))return "Ms.";
         return "NoTitle!";
     }
+
 }
 
