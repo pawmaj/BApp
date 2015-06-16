@@ -26,8 +26,8 @@ public class AddAccountCommand implements Command {
 
 
     public Boolean execute() {
-        if (typeOfAccountToAdd.equals("saving")) { c.createAccount("saving"); return true; }
-        if (typeOfAccountToAdd.equals("checking")){c.createAccount("saving"); return true; }
+        if (typeOfAccountToAdd.equals("saving")) { c.createAccount(); return true; }
+        if (typeOfAccountToAdd.equals("checking")){c.createAccount(); return true; }
         return false;//fails if user provides wrong input
     }
 

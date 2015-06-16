@@ -16,7 +16,7 @@ public class Client implements Report, Comparable {
     private String city;
 
     public float getInitialOverdraft() {
-        return this.activeAccount.getOverdraft();
+        return initialOverdraft;
     }
 
     public String getCity() { return city; }
@@ -62,40 +62,14 @@ public class Client implements Report, Comparable {
         activeAccount.deposit(x);
     }
 
-    public void withdraw(float x) throws BankException {
+    public void withdraw(float x) throws NotEnoughFundsException {
         activeAccount.withdraw(x);
     }
     //create an account and set it as active
-    public Boolean createAccount(String type) {
-        //TODO make only ony account of each type allowed - fix logic
-        if (type.equals("checking")) {
-            if (accounts.size()==2){
-                System.out.print("Only two accounts per client");
-                return false;
-            }
-            accounts.add(new CheckingAccount(initialOverdraft));
-            //set newly created account as active:
-            Iterator<Account> it = accounts.iterator();
-            while (it.hasNext()){
-                Account a = it.next();
-                if(a instanceof CheckingAccount) setActiveAccount(a);
-            }
-            return true;
-        }
-        if (type.equals("saving")){
-            if (accounts.size()>=2){
-                System.out.print("Only two accounts per client");
-                return false;
-            }
-            accounts.add(new SavingAccount());
-            //set newly created account as active:
-            Iterator<Account> it = accounts.iterator();
-            while (it.hasNext()){
-                Account a = it.next();
-                if(a instanceof SavingAccount) setActiveAccount(a);
-            }
-
-        }
+    public Boolean createAccount() {
+        Account a = new SavingAccount();
+        accounts.add(a);
+        setActiveAccount(a);
         return true;
     }
 

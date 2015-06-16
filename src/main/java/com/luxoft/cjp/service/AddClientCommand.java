@@ -32,7 +32,7 @@ public class AddClientCommand implements Command {
     public Boolean execute() {
         try {
             bs.addClient(c);
-            c.createAccount("checking");//added
+            c.createAccount();//added
             return true;
         }catch (ClientExistsException e){
             System.out.println("Client "+ e.getExistingClientName() + " exists.");

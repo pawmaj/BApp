@@ -1,7 +1,11 @@
-package com.luxoft.cjp.service;
+package com.luxoft.cjp.network;
 
 import com.luxoft.cjp.model.Client;
 import com.luxoft.cjp.model.Command;
+import com.luxoft.cjp.service.AddAccountCommand;
+import com.luxoft.cjp.service.AddClientCommand;
+import com.luxoft.cjp.service.DepositCommand;
+import com.luxoft.cjp.service.InvalidBankArgumentException;
 
 import java.io.IOException;
 import java.io.ObjectInputStream;
@@ -35,7 +39,7 @@ public class BankRemoteOffice {
         ObjectInputStream ois = null;
         Scanner scanner = new Scanner(System.in);
         try {
-            Socket requestSocket = new Socket("localhost",2222);
+            Socket requestSocket = new Socket("localhost",2223);
             oos = new ObjectOutputStream(requestSocket.getOutputStream());
             ois = new ObjectInputStream(requestSocket.getInputStream());
         } catch (IOException e) {
@@ -77,9 +81,7 @@ public class BankRemoteOffice {
     }
     public static String serializeClientToString(Client c){
         StringBuilder sb = new StringBuilder();
-        if (c.getAccounts().size()>1){//if the client has both accounts
-            sb.append("accounttype=b;");
-        }
+        //serialize only information about the first account:
         sb      .append("balance=").append(c.getBalance()).append(";")
                 .append("overdraft=").append(c.getInitialOverdraft()).append(";")
                 .append("name=").append(c.getName()).append(";")

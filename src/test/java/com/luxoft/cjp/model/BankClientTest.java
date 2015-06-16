@@ -5,7 +5,7 @@ import org.junit.Test;
 /**
  * Created by pamajcher on 2015-05-29.
  */
-public class ClientTest {
+public class BankClientTest {
 
     @Test
     public void clientEqualsMustBeReflexive() throws Exception {

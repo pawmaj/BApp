@@ -9,16 +9,17 @@ import java.util.Scanner;
 /**
  * Created by pamajcher on 2015-06-11.
  */
-public class Client {
+public class BankClient {
+    //TODO: move logic outside the constructor to the run() method
     //Example commands: John,withdraw,10
     //                 John,info
-    public Client(){
+    public BankClient(){
         String messageToSend ="";
         ObjectOutputStream oos = null;
         ObjectInputStream ois = null;
         Scanner scanner = new Scanner(System.in);
         try {
-            Socket requestSocket = new Socket("localhost",2222);
+            Socket requestSocket = new Socket("localhost",2004);
             oos = new ObjectOutputStream(requestSocket.getOutputStream());
             ois = new ObjectInputStream(requestSocket.getInputStream());
         } catch (IOException e) {
@@ -40,6 +41,6 @@ public class Client {
         }while(true);
     }
     public static void main(final String args[]) {
-        com.luxoft.cjp.network.Client c = new Client();
+        BankClient c = new BankClient();
     }
 }

@@ -11,18 +11,20 @@ import java.io.ObjectOutputStream;
 import java.net.ServerSocket;
 import java.net.Socket;
 
-/**
+/** if asked from client to withdraw
+ * -if client has more than 1 account send number of accounts to be managed
+ * -or take a look only at first account
  * Created by pamajcher on 2015-06-11.
  */
-public class Server {
+public class BankServer {
     // static BankServiceImpl bsi ;
     private String outMessage;
 
-    public Server(BankServiceImpl bsi) {
+    public BankServer(BankServiceImpl bsi) {
         String message = "";
         outMessage = "";
         try {
-            ServerSocket providerSocket = new ServerSocket(2222, 10);
+            ServerSocket providerSocket = new ServerSocket(2004, 10);
             Socket connection = providerSocket.accept();
             ObjectInputStream ois = new ObjectInputStream(connection.getInputStream());
             ObjectOutputStream oos = new ObjectOutputStream(connection.getOutputStream());
@@ -46,26 +48,15 @@ public class Server {
         com.luxoft.cjp.model.Client c = bsi.getClient(messArr[0]);
 
             if (c != null) {//if client found
-                try{
-                if (messArr[1].equals("withdraw"))//withdraw
 
-                    c.withdraw(Float.valueOf(messArr[2]));
-                outMessage = "Withdraw successfull";
-                System.out.println("Withdraw Successful");
-            }catch(BankException e){
-                outMessage = "Not enough funds";
-                System.out.print("Not enough funds");
-            }catch(IndexOutOfBoundsException e){
-                outMessage = "Wrong syntax";
-            }
+            }//TODO: Just ask for informaion
          if (messArr[1].equals("info"))//get funds info
         {
             outMessage = "Balance:" + c.getBalance() + " overdraft:" + c.getInitialOverdraft();
         }
-
-        } else if (messArr[0].matches("accounttype=.*")) {//if a feed detected
+         /*else if (messArr[0].matches("accounttype=.*")) {//if a feed detected
         BankFeedService.loadStringFeed(message,bsi);//make bank feed service take care of the feed
-        }else{
+        }*/else{
                 outMessage = "Unknown command";
             }
 
@@ -75,6 +66,6 @@ public class Server {
     public static void main(final String args[]) {
         Bank b = new Bank();
         BankServiceImpl bsi  = new BankServiceImpl(b);
-        com.luxoft.cjp.network.Server s = new Server(bsi);
+        BankServer s = new BankServer(bsi);
     }
 }

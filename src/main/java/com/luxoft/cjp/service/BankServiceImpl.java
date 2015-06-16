@@ -33,7 +33,7 @@ public class BankServiceImpl implements BankService {
 
 
     public void addAccount(Client client, String type) {
-        client.createAccount(type);
+        client.createAccount();
     }
 
 

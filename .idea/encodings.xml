@@ -14,7 +14,7 @@
     <file url="file://$PROJECT_DIR$/src/main/java/com/luxoft/cjp/model/OverdraftLimitExceededException.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/main/java/com/luxoft/cjp/model/Report.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/main/java/com/luxoft/cjp/model/SavingAccount.java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/src/main/java/com/luxoft/cjp/network/Server.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/com/luxoft/cjp/network/BankServer.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/main/java/com/luxoft/cjp/service/AddClientCommand.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/main/java/com/luxoft/cjp/service/BankApplication.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/main/java/com/luxoft/cjp/service/BankService.java" charset="UTF-8" />
@@ -23,6 +23,6 @@
     <file url="file://$PROJECT_DIR$/src/main/java/com/luxoft/cjp/service/FindClientCommand.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/main/java/com/luxoft/cjp/service/GetAccountsCommand.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/main/java/com/luxoft/cjp/service/WithdrawCommand.java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/src/test/java/com/luxoft/cjp/model/ClientTest.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/test/java/com/luxoft/cjp/model/BankClientTest.java" charset="UTF-8" />
   </component>
 </project>
