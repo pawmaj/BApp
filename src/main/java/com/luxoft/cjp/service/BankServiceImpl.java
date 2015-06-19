@@ -14,6 +14,10 @@ import java.io.RandomAccessFile;
  */
 public class BankServiceImpl implements BankService {
 
+    public Bank getBank() {
+        return b;
+    }
+
     private Bank b;
 
     public BankServiceImpl(Bank b) {

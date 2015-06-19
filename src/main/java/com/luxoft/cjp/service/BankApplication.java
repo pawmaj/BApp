@@ -35,7 +35,8 @@ public class BankApplication {
         BankServer s = new BankServer(bs);
 
        //Interactive Mode. Client from the feed is already in it.
-        BankCommander.runInteractiveMode(bs);
+        BankCommander bankCommander = new BankCommander();
+        bankCommander.runInteractiveMode(bs);
 
 
 

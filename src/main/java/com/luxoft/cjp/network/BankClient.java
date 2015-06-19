@@ -11,13 +11,23 @@ import java.util.Scanner;
  */
 public class BankClient {
     //TODO: move logic outside the constructor to the run() method
-    //Example commands: John,withdraw,10
-    //                 John,info
+    String messageToSend;
+    ObjectOutputStream oos;
+    ObjectInputStream ois;
+    Scanner scanner;
     public BankClient(){
-        String messageToSend ="";
-        ObjectOutputStream oos = null;
-        ObjectInputStream ois = null;
-        Scanner scanner = new Scanner(System.in);
+        messageToSend ="";
+        oos = null;
+        ois = null;
+        scanner = new Scanner(System.in);
+
+    }
+    public static void main(final String args[]) {
+        BankClient c = new BankClient();
+        c.run();
+    }
+
+    public void run(){
         try {
             Socket requestSocket = new Socket("localhost",2004);
             oos = new ObjectOutputStream(requestSocket.getOutputStream());
@@ -29,8 +39,8 @@ public class BankClient {
         do {
             try {
 
-            System.out.print(">");
-            messageToSend = scanner.next();
+                System.out.print(">");
+                messageToSend = scanner.next();
                 oos.writeObject(messageToSend);
                 System.out.println((String)ois.readObject());//write out server's responses immediately
             } catch (IOException e) {
@@ -39,8 +49,5 @@ public class BankClient {
                 e.printStackTrace();
             }
         }while(true);
-    }
-    public static void main(final String args[]) {
-        BankClient c = new BankClient();
     }
 }

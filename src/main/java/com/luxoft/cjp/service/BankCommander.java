@@ -31,7 +31,7 @@ public class BankCommander {
             }
         });
     }
-    public static void runInteractiveMode(BankServiceImpl bs){
+    public void runInteractiveMode(BankServiceImpl bs){
         //Main loop:
         while (true){
             //print command list
