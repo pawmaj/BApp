@@ -4,6 +4,7 @@ import com.luxoft.cjp.model.Bank;
 import com.luxoft.cjp.model.Client;
 import com.luxoft.cjp.service.BankCommander;
 import com.luxoft.cjp.service.BankServiceImpl;
+import com.luxoft.cjp.service.SendUpdateCommand;
 
 /**
  * Created by pamajcher on 2015-06-15.
@@ -17,7 +18,7 @@ public class BankRemoteOffice {
 
     public static void main(String[] args) {
         BankRemoteOffice remoteOffice = new BankRemoteOffice();
-        remoteOffice.bankComm.registerCommand("Send update command", null);//this causes null pointer exception
+        //this causes null pointer exception
 
         remoteOffice.run();
 
@@ -44,6 +45,7 @@ public class BankRemoteOffice {
         b = new Bank();
         bs = new BankServiceImpl(b);
         bankComm = new BankCommander();
+        bankComm.registerCommand("Send update command", new SendUpdateCommand(bs));
     }
     public void run(){
         bankComm.runInteractiveMode(bs);

@@ -1,4 +1,4 @@
-package com.luxoft.cjp.model;
+package com.luxoft.cjp.unrelated;
 import java.util.HashMap;
 
 public class TestLoadFactor {

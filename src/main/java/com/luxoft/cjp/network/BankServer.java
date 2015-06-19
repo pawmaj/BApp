@@ -1,5 +1,6 @@
 package com.luxoft.cjp.network;
 
+import com.luxoft.cjp.service.BankFeedService;
 import com.luxoft.cjp.service.BankServiceImpl;
 
 import java.io.IOException;
@@ -49,17 +50,16 @@ public class BankServer {
         com.luxoft.cjp.model.Client c = bsi.getClient(messArr[0]);
 
         if (c != null) {//if client found
-
-        }//TODO: Just ask for informaion
-        if (messArr[1].equals("info"))//get funds info
-        {
-            outMessage = "Balance:" + c.getBalance() + " overdraft:" + c.getInitialOverdraft();
+            outMessage = "Balance:" + c.getBalance() + " overdraft:" + c.getInitialOverdraft();//print his infp
         }
-         /*else if (messArr[0].matches("accounttype=.*")) {//if a feed detected
-        BankFeedService.loadStringFeed(message,bsi);//make bank feed service take care of the feed
-        }*/
-        else {
-            outMessage = "Unknown command";
+        try {
+            if (messArr[0].matches("accounttype=.*")) {//if a feed detected
+                BankFeedService.loadStringFeed(message, bsi);//make bank feed service take care of the feed
+            }  else {
+                outMessage = "Unknown command";
+            }
+        }catch (ArrayIndexOutOfBoundsException e){
+            outMessage = "Wrong syntax";
         }
 
     }
