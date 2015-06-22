@@ -26,7 +26,7 @@ public class ServerThread {
     }
 
     public void run(){
-        BankServer server = new BankServer(bsi);
+        BankServer server = new BankServer(bsi,2004);
         try {
             ObjectInputStream ois = new ObjectInputStream(clientSocket.getInputStream());
             ObjectOutputStream oos = new ObjectOutputStream(clientSocket.getOutputStream());
