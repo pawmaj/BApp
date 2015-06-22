@@ -22,7 +22,6 @@ public class BankServer {
 
     public BankServer(BankServiceImpl bsi) {
         this.bsi = bsi;
-        run();
     }
 
     public void run(){
@@ -43,7 +42,7 @@ public class BankServer {
             e.printStackTrace();
         }
     }
-    private void processAndExecuteMessage(String message, BankServiceImpl bsi) {
+    public void processAndExecuteMessage(String message, BankServiceImpl bsi) {
         String[] messArr = message.split(",");
         //parse message array
 
