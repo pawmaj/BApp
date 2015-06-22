@@ -12,21 +12,19 @@ import java.net.Socket;
 /**
  * Created by pamajcher on 2015-06-22.
  */
-public class ServerThread {
+public class ServerThread implements Runnable {
     BankServiceImpl bsi = null;
     Socket clientSocket;
     private String message;
     private String outMessage;
 
-    public void setBankService(BankServiceImpl bs, Socket clientSocket) {
-        this.bsi = bs;
-    }
-    public ServerThread (Socket clientSocket){
+    public ServerThread (Socket clientSocket,BankServiceImpl bsi){
         this.clientSocket = clientSocket;
+        this.bsi = bsi;
     }
 
     public void run(){
-        BankServer server = new BankServer(bsi,2004);
+        BankServer server = new BankServer(bsi);
         try {
             ObjectInputStream ois = new ObjectInputStream(clientSocket.getInputStream());
             ObjectOutputStream oos = new ObjectOutputStream(clientSocket.getOutputStream());
@@ -36,10 +34,14 @@ public class ServerThread {
             server.processAndExecuteMessage(message, bsi);
             oos.writeObject(outMessage);
             }   while (!message.equals("exit"));
+            clientSocket.close();
+            BankServerThreaded.clientCounter--;
+
     } catch (IOException e) {
         e.printStackTrace();
     } catch (ClassNotFoundException e) {
         e.printStackTrace();
     }
     }
+
 }

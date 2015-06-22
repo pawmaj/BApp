@@ -29,13 +29,14 @@ public class BankClient {
 
     public void run(){
         try {
-            Socket requestSocket = new Socket("localhost",2004);
+            Socket requestSocket = new Socket("localhost",2005);
             oos = new ObjectOutputStream(requestSocket.getOutputStream());
             ois = new ObjectInputStream(requestSocket.getInputStream());
         } catch (IOException e) {
             e.printStackTrace();
         }
         System.out.println("Connected to the server");
+
         do {
             try {
 
@@ -49,5 +50,29 @@ public class BankClient {
                 e.printStackTrace();
             }
         }while(true);
+    }
+    public void sendCustomMessage(String customMessage){
+        try {
+            Socket requestSocket = new Socket("localhost",2005);
+            oos = new ObjectOutputStream(requestSocket.getOutputStream());
+            ois = new ObjectInputStream(requestSocket.getInputStream());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        System.out.println("Connected to the server");
+
+            try {
+
+                System.out.print(">");
+                messageToSend = customMessage;
+                oos.writeObject(messageToSend);
+                System.out.println( "Received response: "+(String)ois.readObject());//write out server's responses immediately
+            } catch (IOException e) {
+                e.printStackTrace();
+            } catch (ClassNotFoundException e) {
+                e.printStackTrace();
+            }
+
+
     }
 }

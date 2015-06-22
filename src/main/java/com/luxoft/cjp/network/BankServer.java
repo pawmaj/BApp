@@ -1,5 +1,6 @@
 package com.luxoft.cjp.network;
 
+import com.luxoft.cjp.model.NotEnoughFundsException;
 import com.luxoft.cjp.service.BankFeedService;
 import com.luxoft.cjp.service.BankServiceImpl;
 
@@ -16,13 +17,11 @@ import java.net.Socket;
  * TODO:Fix exception when there is space after name
  */
 public class BankServer {
-    private final int clientSocket;
     private BankServiceImpl bsi ;
     private String message = "";
     private String outMessage = "";
 
-    public BankServer(BankServiceImpl bsi, int clientSocket ) {
-        this.clientSocket = clientSocket;
+    public BankServer(BankServiceImpl bsi) {
         this.bsi = bsi;
     }
 
@@ -52,6 +51,13 @@ public class BankServer {
 
         if (c != null) {//if client found
             outMessage = "Balance:" + c.getBalance() + " overdraft:" + c.getInitialOverdraft();//print his infp
+            if (messArr[1].equals("withdraw")){
+                try {
+                    c.withdraw(Float.valueOf(messArr[2]));
+                }catch(NotEnoughFundsException e){
+                    outMessage = "Not enough funds";
+                }
+            }
         }
         try {
             if (messArr[0].matches("accounttype=.*")) {//if a feed detected
