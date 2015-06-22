@@ -16,11 +16,13 @@ import java.net.Socket;
  * TODO:Fix exception when there is space after name
  */
 public class BankServer {
+    private final int clientSocket;
     private BankServiceImpl bsi ;
     private String message = "";
     private String outMessage = "";
 
-    public BankServer(BankServiceImpl bsi) {
+    public BankServer(BankServiceImpl bsi, int clientSocket ) {
+        this.clientSocket = clientSocket;
         this.bsi = bsi;
     }
 
