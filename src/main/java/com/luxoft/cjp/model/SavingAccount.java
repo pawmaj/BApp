@@ -4,7 +4,7 @@ public class SavingAccount extends AbstractAccount implements Account {
 
 
 
-    public void withdraw(float amount) throws NotEnoughFundsException {
+    public synchronized void withdraw(float amount) throws NotEnoughFundsException {
         if(getBalance() >= amount) {
             setBalance(getBalance() - amount);
         }else{

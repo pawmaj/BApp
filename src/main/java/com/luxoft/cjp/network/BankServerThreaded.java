@@ -30,14 +30,6 @@ public class BankServerThreaded implements Runnable {
     static BankServiceImpl bsi = new BankServiceImpl(b);
     public static volatile Integer clientCounter = 0;//java documentation says that all operations on volatile variables are guaranteed atomic
 
-    public BankServerThreaded() {
-   //     try {
-        //    ServerSocket serverSocket = new ServerSocket(PORT);
-      //  }catch (IOException e){
-            //e.printStackTrace();
-       // }
-        ExecutorService pool = Executors.newFixedThreadPool(POOL_SIZE);
-    }
     public void run(){
         boolean running = true;
 
@@ -59,7 +51,7 @@ public class BankServerThreaded implements Runnable {
                 }
 
 
-        } //end main
+        } //end run
 
 
 }

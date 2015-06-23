@@ -29,7 +29,9 @@ public class ServerThread implements Runnable {
             ObjectInputStream ois = new ObjectInputStream(clientSocket.getInputStream());
             ObjectOutputStream oos = new ObjectOutputStream(clientSocket.getOutputStream());
             do {
-            message = (String) ois.readObject();
+                synchronized (ServerThread.this) {
+                    message = (String) ois.readObject();
+                }
             System.out.println("Received: " + message);//print the received string
             server.processAndExecuteMessage(message, bsi);
             oos.writeObject(outMessage);

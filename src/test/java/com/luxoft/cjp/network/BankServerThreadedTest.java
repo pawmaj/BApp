@@ -24,23 +24,23 @@ public class BankServerThreadedTest {
         client.deposit(2000);
         BankServerThreaded bankServerThreaded = new BankServerThreaded();//create new bank server threaded
         bankServerThreaded.setBsi(bsi);//attach our current bank to it
-        Thread t = new Thread(new BankServerThreaded());
-        t.start();
-        try {
-            t.join();
-        }catch (InterruptedException e){
+        Thread t = new Thread(new BankServerThreaded());//I need to run it in separate thread,
+        t.start();                                      // because I need to execute the below code in parallel to this!
 
-        }
         double amount = client.getBalance();
 
-        for (int i = 0; i <1; i ++) {
+        for (int i = 0; i <1000; i ++) {//start 1000 clients each withdrawing 1 and then disconnecting
         BankClientMock bankClientMock = new BankClientMock(client);
         bankClientMock.start();
 
         }
+
         double amount2 = client.getBalance();
 
-        org.junit.Assert.assertEquals(amount - 1000, amount2, 100);
+        org.junit.Assert.assertEquals(amount - 1000, amount2, 0);//check the amount
+
+
+
     }
 
     private class BankClientMock {
@@ -50,10 +50,12 @@ public class BankServerThreadedTest {
         public BankClientMock(com.luxoft.cjp.model.Client client) {
         this.client = client;
         }
-        public void start(){
+
+        public synchronized void start(){
             try {
 
-                networkClient.sendCustomMessage(client.getName()+",withdraw,1");
+                networkClient.sendCustomMessage(client.getName()+",withdraw,1");//withdraw one
+                networkClient.sendCustomMessage("exit");//disconnect
             }catch (Exception e){
 
             }
