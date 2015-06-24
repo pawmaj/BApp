@@ -12,7 +12,7 @@ public class BankServerMonitor implements Runnable {
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-            System.out.println("Client counter:" + BankServerThreaded.clientCounter);
+            System.out.println("Client counter:" + BankServerThreaded.clientCounter.get());
         }
     }
 }

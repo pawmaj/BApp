@@ -37,7 +37,7 @@ public class ServerThread implements Runnable {
             oos.writeObject(outMessage);
             }   while (!message.equals("exit"));
             clientSocket.close();
-            BankServerThreaded.clientCounter--;
+            BankServerThreaded.clientCounter.decrementAndGet();
 
     } catch (IOException e) {
         e.printStackTrace();

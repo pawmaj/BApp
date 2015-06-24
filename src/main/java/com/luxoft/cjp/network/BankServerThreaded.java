@@ -8,6 +8,7 @@ import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import java.util.concurrent.atomic.AtomicInteger;
 
 /**
  * Created by pamajcher on 2015-06-22.
@@ -18,19 +19,20 @@ public class BankServerThreaded implements Runnable {
     static ServerSocket serverSocket;
     static ExecutorService pool = Executors.newFixedThreadPool(POOL_SIZE);
 
-    public static void setB(Bank b) {
+    public static void setBank(Bank b) {
         BankServerThreaded.b = b;
     }
 
-    public static void setBsi(BankServiceImpl bsi) {
+    public static void setBankServiceImpl(BankServiceImpl bsi) {
         BankServerThreaded.bsi = bsi;
     }
 
     static Bank b = new Bank();
     static BankServiceImpl bsi = new BankServiceImpl(b);
-    public static volatile Integer clientCounter = 0;//java documentation says that all operations on volatile variables are guaranteed atomic
+    public static AtomicInteger clientCounter;
 
     public void run(){
+        clientCounter.set(0);//initialize client counter
         boolean running = true;
 
             try {
@@ -43,7 +45,7 @@ public class BankServerThreaded implements Runnable {
                 while (running) {
                     try {
                         Socket clientSocket = serverSocket.accept();
-                        clientCounter++;
+                        clientCounter.incrementAndGet();
                         pool.execute(new ServerThread(clientSocket,bsi));
                     }catch (IOException e){
                         e.printStackTrace();
