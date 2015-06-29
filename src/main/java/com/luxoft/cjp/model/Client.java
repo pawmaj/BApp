@@ -75,7 +75,7 @@ public class Client implements Report, Comparable {
 
 
     public Client(String name, float initialOverdraft, String electronicAddress, String phoneNumber, String city, String gender) throws InvalidBankArgumentException {
-        if (!electronicAddress.matches("[a-z|A-Z]*@[a-zA-Z]*.[a-zA-Z]*"))
+        if (!electronicAddress.matches("[a-zA-Z0-9]*@[a-zA-Z]*.[a-zA-Z]*"))
             throw new InvalidBankArgumentException(electronicAddress);
         this.name = name;
         this.initialOverdraft = initialOverdraft;

@@ -8,6 +8,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.RandomAccessFile;
+import java.util.Collection;
 
 /**
  * Created by pamajcher on 2015-05-21.
@@ -89,6 +90,10 @@ public class BankServiceImpl implements BankService {
 
     public void loadClient(String folder) {
         BankFeedService.loadFeed(folder, this);
+    }
+
+    public Collection<Client> getClientsSorted() {
+        return b.getClientsSorted();
     }
 
     public void report(){

@@ -23,7 +23,7 @@ public class BankServerThreadedTest {
         bsi.addAccount(bsi.getClient("JohnSmith"),"saving");
         client.deposit(2000);
         BankServerThreaded bankServerThreaded = new BankServerThreaded();//create new bank server threaded
-        bankServerThreaded.setBsi(bsi);//attach our current bank to it
+        bankServerThreaded.setBankServiceImpl(bsi);//attach our current bank to it
         Thread t = new Thread(new BankServerThreaded());//I need to run it in separate thread,
         t.start();                                      // because I need to execute the below code in parallel to this!
 

@@ -4,6 +4,8 @@ import com.luxoft.cjp.model.Bank;
 import com.luxoft.cjp.model.Client;
 import com.luxoft.cjp.model.ClientExistsException;
 
+import java.util.Collection;
+
 /**
  * Created by pamajcher on 2015-05-21.
  */
@@ -27,7 +29,9 @@ public interface BankService {
 
     public void loadClient(String folder);
 
+    public Collection<Client> getClientsSorted();
 
+    public Bank getBank();
 
 }
 
