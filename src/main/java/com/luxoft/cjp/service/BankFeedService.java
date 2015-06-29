@@ -183,6 +183,10 @@ public class BankFeedService {
             System.out.println("IOException");
         }
     }
+    public static void deleteExampleFeed(){
+        File f0 = new File("example/client.feed");
+        f0.delete();
+    }
 }
 
 
