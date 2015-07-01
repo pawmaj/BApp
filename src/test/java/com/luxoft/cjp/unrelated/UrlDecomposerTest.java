@@ -27,13 +27,13 @@ public class UrlDecomposerTest {
     Fast, Independent, Repeatable, Self-validating, Timely
      */
     @Test
-    public void emptyStringShouldReturnNothing(){}
+    public void shouldExtractProtocol(){}
     @Test
-    public void extractProtocol(){}
+    public void shouldExtractDomain(){}
     @Test
-    public void extractDomain(){}
+    public void shouldExtractPath(){}
     @Test
-    public void extractPath(){}
+    public void shouldThrowExceptionIfNotUrl(){}
     @Test
-    public void nonUrlShouldReturnNothing(){}
+    public void shouldThrowExceptionIfEmptyScreen(){}
 }

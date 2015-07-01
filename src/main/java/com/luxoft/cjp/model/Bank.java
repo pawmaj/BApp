@@ -5,9 +5,20 @@ import java.util.*;
 public class Bank implements Report {
 
 
+
+
+
     private Set<Client> clients = new HashSet<Client>();
     private Map<String, Client> clientsMap = new HashMap<String, Client>();
     private List<ClientRegistrationListener> listeners = new LinkedList<ClientRegistrationListener>();
+    private int id;
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     //When we are returning clients we can as well return them sorted already
     //This getter obscures internal implementation

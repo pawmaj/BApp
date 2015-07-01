@@ -2,7 +2,14 @@ package com.luxoft.cjp.model;
 
 public class SavingAccount extends AbstractAccount implements Account {
 
+    private int id;
+    public int getId() {
+        return id;
+    }
 
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public synchronized void withdraw(float amount) throws NotEnoughFundsException {
         if(getBalance() >= amount) {
