@@ -1,3 +1,4 @@
+/*
 package com.luxoft.cjp.dao;
 
 import com.luxoft.cjp.model.Bank;
@@ -7,9 +8,11 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+*/
 /**
  * Created by pamajcher on 2015-07-01.
- */
+ *//*
+
 public class BankDaoImpl extends BaseDAOImpl {
 
     Connection conn;
@@ -63,4 +66,4 @@ public class BankDaoImpl extends BaseDAOImpl {
 
     }
 
-}
+}*/

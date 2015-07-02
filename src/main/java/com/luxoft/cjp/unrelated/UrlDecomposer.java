@@ -7,15 +7,17 @@ import java.net.URL;
  * Created by pamajcher on 2015-06-30.
  */
 public class UrlDecomposer {
-
-    public String[] decompose(String url) throws MalformedURLException, IllegalArgumentException{
+    public SplittedUrl getSplittedUrl(String url) throws MalformedURLException, IllegalArgumentException{
         checkInput(url);
         URL urlObj = new URL(url);
+        return new SplittedUrl(decompose(urlObj)[0],decompose(urlObj)[1],decompose(urlObj)[2]);
+    }
 
-        String[] result =null;
-        result[0] = urlObj.getProtocol();
-        result[1] = urlObj.getHost();
-        result[2] = urlObj.getPath();
+    private String[] decompose(URL url) {
+        String[] result = {"","",""};
+        result[0] = url.getProtocol();
+        result[1] = url.getHost();
+        result[2] = url.getPath();
         return result;
     }
 

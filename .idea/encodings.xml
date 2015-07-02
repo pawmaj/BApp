@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="Encoding" useUTFGuessing="true" native2AsciiForPropertiesFiles="false">
+  <component name="Encoding" useUTFGuessing="true" native2AsciiForPropertiesFiles="false" defaultCharsetForPropertiesFiles="UTF-8">
     <file url="file://$PROJECT_DIR$/src/main/java/com/luxoft/cjp/dao/BankDAO.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/main/java/com/luxoft/cjp/dao/BaseDAO.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/main/java/com/luxoft/cjp/model/AbstractAccount.java" charset="UTF-8" />
@@ -30,11 +30,14 @@
     <file url="file://$PROJECT_DIR$/src/main/java/com/luxoft/cjp/service/FindClientCommand.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/main/java/com/luxoft/cjp/service/GetAccountsCommand.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/main/java/com/luxoft/cjp/service/WithdrawCommand.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/com/luxoft/cjp/unrelated/SplittedUrl.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/main/java/com/luxoft/cjp/unrelated/SynchronizedTutor.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/main/java/com/luxoft/cjp/unrelated/TestLoadFactor.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/com/luxoft/cjp/unrelated/UrlDecomposer.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/test/java/com/luxoft/cjp/model/BankClientTest.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/test/java/com/luxoft/cjp/network/BankServerThreadedTest.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/test/java/com/luxoft/cjp/service/BankServiceImplTest.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/test/java/com/luxoft/cjp/unrelated/UrlDecomposerTest.java" charset="UTF-8" />
+    <file url="PROJECT" charset="UTF-8" />
   </component>
 </project>

@@ -1,12 +1,15 @@
+/*
 package com.luxoft.cjp.dao;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
+*/
 /**
  * Created by pamajcher on 2015-07-01.
- */
+ *//*
+
 
     public class BaseDaoImpl {
 
@@ -58,3 +61,4 @@ import java.sql.SQLException;
 
     }
 }
+*/
