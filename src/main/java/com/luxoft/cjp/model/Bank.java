@@ -4,26 +4,17 @@ import java.util.*;
 
 public class Bank implements Report {
 
-
-
-
+    private int id;
+    private String name;
 
     private Set<Client> clients = new HashSet<Client>();
     private Map<String, Client> clientsMap = new HashMap<String, Client>();
     private List<ClientRegistrationListener> listeners = new LinkedList<ClientRegistrationListener>();
-    private int id;
+
     public int getId() {
         return id;
     }
 
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    //When we are returning clients we can as well return them sorted already
-    //This getter obscures internal implementation
-    //and returns unmodifiable collection
-    //of clients sorted by name
     public Collection<Client> getClientsSorted()
     {
         TreeSet cts = new TreeSet(new Comparator() {
@@ -75,6 +66,10 @@ public class Bank implements Report {
 
     }
 
+    public void setId(int id) {
+        this.id = id;
+    }
+
     //Map the client to his name
     class MapClientListener implements ClientRegistrationListener {
 
@@ -95,7 +90,8 @@ public class Bank implements Report {
         }
     }
 
-        public Bank(){
+        public Bank(String name){
+            this.name = name;
             listeners.add(new PrintClientListener());
             listeners.add(new EmailNotificationListener());
             listeners.add(new MapClientListener());

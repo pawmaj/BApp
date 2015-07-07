@@ -27,7 +27,7 @@ public class BankServerThreaded implements Runnable {
         BankServerThreaded.bsi = bsi;
     }
 
-    static Bank b = new Bank();
+    static Bank b = new Bank(id);
     static BankServiceImpl bsi = new BankServiceImpl(b);
     public static AtomicInteger clientCounter;
 

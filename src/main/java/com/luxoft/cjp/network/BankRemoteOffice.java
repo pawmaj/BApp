@@ -42,7 +42,7 @@ public class BankRemoteOffice {
 
     public BankRemoteOffice() {
 
-        b = new Bank();
+        b = new Bank(id);
         bs = new BankServiceImpl(b);
         bankComm = new BankCommander();
         bankComm.registerCommand("Send update command", new SendUpdateCommand(bs));

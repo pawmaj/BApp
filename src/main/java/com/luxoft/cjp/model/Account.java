@@ -7,6 +7,8 @@ package com.luxoft.cjp.model;
 
 public interface Account extends Report {
 
+    int getId();
+
     float getBalance();
 
     void deposit(float amount);
@@ -17,6 +19,8 @@ public interface Account extends Report {
     void printDecimalValue();
 
     float getOverdraft();
+
+    String getUser();
 }
 
 

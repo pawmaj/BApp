@@ -4,6 +4,13 @@ public abstract class AbstractAccount implements Account {
 
     private float balance;
 
+    private int id;
+
+    @Override
+    public int getId() {
+        return id;
+    }
+
 
     public float getBalance() {
         return balance;

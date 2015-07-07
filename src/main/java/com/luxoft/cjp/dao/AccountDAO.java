@@ -12,7 +12,7 @@ public interface AccountDAO {
 
     public void add(Account account) throws DAOException;
 
-    public void removeByClientId(int idClient) throws DAOException;
+    public void removeByClientId(String clientName) throws DAOException;
 
-    public List<Account> getClientAccounts(int idClient) throws DAOException;
+    public List<Account> getClientAccounts(String clientName) throws DAOException;
 }

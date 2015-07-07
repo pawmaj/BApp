@@ -7,8 +7,6 @@ import com.luxoft.cjp.service.BankServiceImpl;
 import com.luxoft.cjp.service.InvalidBankArgumentException;
 import org.junit.Test;
 
-import static org.junit.Assert.*;
-
 /**
  * Created by pamajcher on 2015-06-22.
  */
@@ -16,7 +14,7 @@ public class BankServerThreadedTest {
 
     @Test
     public void clientMustSeeAvailableFunds() throws InvalidBankArgumentException,ClientExistsException{
-        Bank b = new Bank();
+        Bank b = new Bank(id);
         BankServiceImpl bsi = new BankServiceImpl(b);
         bsi.addClient(new Client("JohnSmith", 0, "john@smi.th", "0700770770", "Krakow", "m"));
         Client client = bsi.getClient("JohnSmith");

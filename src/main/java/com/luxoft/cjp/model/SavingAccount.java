@@ -24,6 +24,11 @@ public class SavingAccount extends AbstractAccount implements Account {
     }
 
     @Override
+    public String getUser() {
+        return null;
+    }
+
+    @Override
     public int hashCode() {
         return super.hashCode();
     }

@@ -9,7 +9,7 @@ import com.luxoft.cjp.network.BankServer;
  */
 public class BankApplication {
 
-    private static Bank currentBank = new Bank();
+    private static Bank currentBank = new Bank(id);
     private static BankServiceImpl bs = new BankServiceImpl(currentBank);
 
     public static void main(String[] args) {

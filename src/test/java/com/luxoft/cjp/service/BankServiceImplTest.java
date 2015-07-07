@@ -2,13 +2,11 @@ package com.luxoft.cjp.service;
 
 import com.luxoft.cjp.model.Bank;
 import com.luxoft.cjp.model.Client;
-import com.sun.glass.ui.Size;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.io.File;
 import java.util.Collection;
 import java.util.LinkedList;
 import java.util.List;
@@ -27,7 +25,7 @@ public class BankServiceImplTest {
 
     @Before
     public void setUp() throws Exception {
-        fBank = new Bank();
+        fBank = new Bank(id);
         fBankService = new BankServiceImpl(fBank);
         BankFeedService.writeExampleFeed();
 
